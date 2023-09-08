@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../utility/app_colors.dart';
+import 'auth/email_verification_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void goToNextScreen() {
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Get.offAll(const HomeScreen());
+      Get.offAll(const EmailVerificationScreen());
     });
   }
 
