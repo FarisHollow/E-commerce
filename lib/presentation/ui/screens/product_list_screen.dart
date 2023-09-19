@@ -1,4 +1,3 @@
-import 'package:e_commerce/presentation/ui/widgets/category_card.dart';
 import 'package:e_commerce/presentation/ui/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
