@@ -1,3 +1,4 @@
+import 'package:e_commerce/presentation/ui/widgets/category_card.dart';
 import 'package:e_commerce/presentation/ui/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
             itemBuilder: (context, index) {
               return const FittedBox(
-                child: ProductCard(),
+                // child: ProductCard(),
               );
             }),
       ),
