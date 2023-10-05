@@ -115,7 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return CategoryCard(
-                              categoryData: categoryController.categoryModel.data![index],
+                              categoryData: categoryController.categoryModel.data![index], onTap: () {
+                              Get.to(ProductListScreen(
+                                  categoryId: categoryController
+                                      .categoryModel.data![index].id!));
+                            },
                             );
                           });
                     }
@@ -127,7 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SectionHeader(
                 title: 'Popular',
                 onTap: () {
-                  Get.to(const ProductListScreen());
+                  Get.to(ProductListScreen(
+                    productModel:
+                    Get.find<PopularProductController>().popularProductModel,
+                  ));
                 },
               ),
               SizedBox(
@@ -157,7 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SectionHeader(
                 title: 'Special',
                 onTap: () {
-                  Get.to(const ProductListScreen());
+                  Get.to(ProductListScreen(
+                    productModel:
+                    Get.find<SpecialProductController>().specialProductModel,
+                  ));
                 },
               ),
               SizedBox(
@@ -187,7 +197,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SectionHeader(
                 title: 'New',
                 onTap: () {
-                  Get.to(const ProductListScreen());
+                  Get.to(ProductListScreen(
+                    productModel:
+                    Get.find<NewProductController>().newProductModel,
+                  ));
                 },
               ),
               SizedBox(
