@@ -1,6 +1,6 @@
 # e_commerce
 
-An ecommerce project
+An ecommerce project (On Process)
 
 Project structure
 . └── e_commerce/
