@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:e_commerce/presentation/state_holders/otp_verification_controller.dart';
-import 'package:e_commerce/presentation/ui/screens/auth/complete_profile_screen.dart';
 import 'package:e_commerce/presentation/ui/screens/main_bottom_nav_screen.dart';
 import 'package:e_commerce/presentation/ui/utility/app_colors.dart';
 import 'package:e_commerce/presentation/ui/utility/image_assets.dart';
@@ -20,53 +17,6 @@ class OTPVerificationScreen extends StatefulWidget {
 
 class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   final TextEditingController _otpTEController = TextEditingController();
-  int count = 120;
-
-  @override
-  void initState() {
-    super.initState();
-    startCountdown();
-  }
-
-  void startCountdown() {
-    const oneSecond = Duration(seconds: 1);
-    Timer.periodic(oneSecond, (timer) {
-      if (count > 0) {
-        setState(() {
-          count -= 1;
-        });
-      } else {
-        timer.cancel();
-      }
-    });
-  }
-
-  TextSpan showCountdown() {
-    if (count > 0) {
-      return TextSpan(
-        style: const TextStyle(color: Colors.grey),
-        children: [
-          const TextSpan(text: 'This code will expire in  '),
-          TextSpan(
-            text: '$count s ',
-            style: const TextStyle(
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      );
-    } else {
-      return const TextSpan(
-        text: 'The code is expired',
-        style: TextStyle(
-          color: Colors.redAccent,
-          fontWeight: FontWeight.w500,
-        ),
-      );
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +58,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 ),
                 PinCodeTextField(
                   controller: _otpTEController,
-                  length: 4,
+                  length: 6,
                   obscureText: false,
                   animationType: AnimationType.fade,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -160,14 +110,24 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   height: 24,
                 ),
                 RichText(
-
-                  text:showCountdown(),
-
+                  text: const TextSpan(
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(text: 'This code will expire in '),
+                      TextSpan(
+                        text: '120s',
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(foregroundColor: Colors.grey),
-                  child: const Text('Resend code?'),
+                  child: const Text('Resend'),
                 ),
               ],
             ),
